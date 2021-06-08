@@ -14,9 +14,11 @@ public class AppConfig {
 
 	@Bean
 	public DataSource dataSource() {
-		return (DataSource) new EmbeddedDatabaseBuilder()
+		return new EmbeddedDatabaseBuilder()
 				.setType(EmbeddedDatabaseType.H2)
 				.addScript("classpath:jdbc/schema.sql")
-				.addScript("classpath:jdbc/test-data.sql");
+				.addScript("classpath:jdbc/test-data.sql")
+				.build();
 	}
+
 }
